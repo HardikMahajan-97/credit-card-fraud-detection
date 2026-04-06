@@ -25,7 +25,7 @@ from streaming.pipeline import StreamingFraudPipeline, simulate_streaming
 from training.trainer import PlattCalibrator, TransactionDataset, evaluate, train, fraud_kpis, fraud_composite_score
 
 CONFIG = {
-    "n_transactions": 50000,
+    "n_transactions": 200000,
     "seq_len": 10,
     "test_size": 0.15,
     "val_size": 0.15,
@@ -136,7 +136,8 @@ def load_or_generate_data(config):
         customers_df = pd.read_csv(f"{config['data_dir']}/customers.csv")
     else:
         txn_df, cards_df, merchants_df, devices_df, customers_df = generate_synthetic_dataset(
-            output_dir=config["data_dir"]
+            output_dir=config["data_dir"],
+            n_transactions=config["n_transactions"],
         )
     print(f"[Main] {len(txn_df)} transactions | fraud={txn_df['is_fraud'].mean():.2%}")
     return txn_df, cards_df, merchants_df, devices_df, customers_df

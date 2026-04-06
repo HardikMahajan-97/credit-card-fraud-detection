@@ -208,7 +208,7 @@ def generate_transactions(cards_df, merchants_df, devices_df, n=200000):
     return df
 
 
-def generate_synthetic_dataset(output_dir="data/raw"):
+def generate_synthetic_dataset(output_dir="data/raw", n_transactions=200000):
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
     print("[DataGen] Generating customers...")
@@ -224,7 +224,7 @@ def generate_synthetic_dataset(output_dir="data/raw"):
     devices = generate_devices(800)
 
     print("[DataGen] Generating transactions...")
-    transactions = generate_transactions(cards, merchants, devices, n=50000)
+    transactions = generate_transactions(cards, merchants, devices, n=n_transactions)
 
     customers.to_csv(f"{output_dir}/customers.csv", index=False)
     cards.to_csv(f"{output_dir}/cards.csv", index=False)

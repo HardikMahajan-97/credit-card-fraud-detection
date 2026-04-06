@@ -289,7 +289,7 @@ All key hyperparameters live in `main.py` at the top in the `CONFIG` dict:
 | `lr` | `1e-3` | Learning rate |
 | `seq_len` | `10` | Transformer input sequence length |
 | `threshold` | `0.5` | Fraud decision threshold |
-| `n_transactions` | `50000` | Synthetic dataset size |
+| `n_transactions` | `200000` | Synthetic dataset size |
 | `stream_n_transactions` | `200` | Streaming simulation size |
 
 ---
